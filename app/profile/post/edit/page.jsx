@@ -33,7 +33,7 @@ const EditPost = () => {
 
 		try {
 			if (!id) throw new Error("Post ID is missing"); // Add check for ID
-			const response = await fetch(`http://localhost:3000/api/prompt/${id}`, {
+			const response = await fetch(`/api/prompt/${id}`, {
 				method: "PATCH",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({

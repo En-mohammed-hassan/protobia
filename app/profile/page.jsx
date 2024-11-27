@@ -26,9 +26,7 @@ const myProfile = () => {
 		console.log("runed");
 		console.log(session?.user.id);
 		const fetchdata = async () => {
-			const res = await fetch(
-				`http://localhost:3000/api/users/${session?.user.id}/posts`
-			);
+			const res = await fetch(`/api/users/${session?.user.id}/posts`);
 			const data = await res.json();
 			setPosts(data);
 			console.log("fetching data for user");

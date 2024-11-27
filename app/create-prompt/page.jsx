@@ -14,7 +14,7 @@ const CreatPost = () => {
 		setSubmitting(true);
 		console.log(session);
 		try {
-			const res = await fetch("http://localhost:3000/api/prompt/new", {
+			const res = await fetch("/api/prompt/new", {
 				method: "POST",
 				body: JSON.stringify({
 					prompt: post.prompt,
