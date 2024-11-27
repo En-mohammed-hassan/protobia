@@ -1,5 +1,4 @@
 "use client";
-import { Suspense } from "react";
 import Form from "@/components/Form";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
@@ -8,7 +7,6 @@ import { useRouter } from "next/navigation";
 const EditPost = () => {
 	const [post, setPost] = useState({ prompt: "", tag: "" });
 	const [submitting, setSubmitting] = useState(false);
-	const [loading, setLoading] = useState(true); // Add loading state
 	const router = useRouter();
 	const params = useSearchParams();
 	const id = params?.get("id"); // Ensure params exists before accessing get()
@@ -23,8 +21,6 @@ const EditPost = () => {
 				setPost(post);
 			} catch (error) {
 				console.error("Error fetching post:", error);
-			} finally {
-				setLoading(false); // Ensure loading state is updated
 			}
 		};
 
@@ -55,21 +51,14 @@ const EditPost = () => {
 		}
 	};
 
-	if (loading) {
-		// Display a loading state until the post data is fetched
-		return <div>Loading...</div>;
-	}
-
 	return (
-		<Suspense fallback={<div>Loading...</div>}>
-			<Form
-				type="Edit"
-				post={post}
-				setPost={setPost}
-				submitting={submitting}
-				handleSubmit={editPrompt}
-			/>
-		</Suspense>
+		<Form
+			type="Edit"
+			post={post}
+			setPost={setPost}
+			submitting={submitting}
+			handleSubmit={editPrompt}
+		/>
 	);
 };
 

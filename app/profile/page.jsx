@@ -3,7 +3,6 @@ import Profile from "@/components/Profile";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { DELETE } from "../api/prompt/[id]/route";
 const myProfile = () => {
 	const router = useRouter();
 	const [posts, setPosts] = useState([]);
